@@ -5,22 +5,11 @@ import Domain.Slide;
 
 import java.util.ArrayList;
 
+//Factory pattern correct? Definitely not abstract factory : Tibo
 public class PresentationFactory {
 
-    public static Presentation createPresentation(ArrayList<Slide> slides, String title)
+    public static Presentation createPresentation()
     {
-        PresentationBuilder builder = new PresentationBuilder();
-        for (Slide slide : slides) {
-            builder.addSlide(slide);
-        }
-        builder.setTitle(title);
-         return builder.createInstance();
-    }
-
-    public static Presentation createEmptyPresentation()
-    {
-        PresentationBuilder builder = new PresentationBuilder();
-
-        return builder.createInstance();
+        return new Presentation();
     }
 }
