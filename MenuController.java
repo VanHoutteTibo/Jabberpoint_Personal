@@ -35,6 +35,7 @@ public class MenuController extends MenuBar {
 	protected static final String NEW = "New";
 	protected static final String NEXT = "Next";
 	protected static final String OPEN = "Open";
+	protected static final String ADDEMPTYSLIDE = "Add empty slide";
 	protected static final String PAGENR = "Page number?";
 	protected static final String PREV = "Prev";
 	protected static final String SAVE = "Save";
@@ -69,6 +70,13 @@ public class MenuController extends MenuBar {
 				parent.repaint();
 			}
 		} );
+        fileMenu.add(menuItem = mkMenuItem(ADDEMPTYSLIDE));
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                PresentationService.addEmptySlide(presentation);
+                parent.repaint();
+            }
+        } );
 		fileMenu.add(menuItem = mkMenuItem(NEW));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
