@@ -24,6 +24,7 @@ public class MenuController extends MenuBar {
 	private Presentation presentation; // Er worden commando's gegeven aan de presentatie
 
     private PresentationAccessorService presentationAccessor;
+    private PresentationService presentationService;
 	
 	private static final long serialVersionUID = 227L;
 	
@@ -48,9 +49,10 @@ public class MenuController extends MenuBar {
 	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
 
-	public MenuController(Frame frame, Presentation pres, PresentationAccessorService accessor) {
+	public MenuController(Frame frame, Presentation pres, PresentationAccessorService accessor, PresentationService presentationService) {
 
         this.presentationAccessor = accessor;
+        this.presentationService = presentationService;
 
 		parent = frame;
 		presentation = pres;
@@ -59,10 +61,10 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(OPEN));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.clear();
+				presentationService.clearPresentation(presentation);
 				try {
                     presentationAccessor.loadFile(presentation, TESTFILE);
-					presentation.setSlideNumber(0);
+					presentationService.setSlideNumber(presentation,0);
 				} catch (IOException exc) {
 					JOptionPane.showMessageDialog(parent, IOEX + exc, 
          			LOADERR, JOptionPane.ERROR_MESSAGE);
@@ -73,14 +75,14 @@ public class MenuController extends MenuBar {
         fileMenu.add(menuItem = mkMenuItem(ADDEMPTYSLIDE));
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
-                PresentationService.addEmptySlide(presentation);
+                presentationService.addEmptySlide(presentation);
                 parent.repaint();
             }
         } );
 		fileMenu.add(menuItem = mkMenuItem(NEW));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.clear();
+                presentationService.clearPresentation(presentation);
 				parent.repaint();
 			}
 		});
@@ -99,7 +101,7 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(EXIT));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.exit(0);
+				presentationService.exit(presentation, 0);
 			}
 		});
 		add(fileMenu);
@@ -107,13 +109,13 @@ public class MenuController extends MenuBar {
 		viewMenu.add(menuItem = mkMenuItem(NEXT));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.nextSlide();
+                presentationService.nextSlide(presentation);
 			}
 		});
 		viewMenu.add(menuItem = mkMenuItem(PREV));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.prevSlide();
+				presentationService.previousSlide(presentation);
 			}
 		});
 		viewMenu.add(menuItem = mkMenuItem(GOTO));
@@ -121,7 +123,7 @@ public class MenuController extends MenuBar {
 			public void actionPerformed(ActionEvent actionEvent) {
 				String pageNumberStr = JOptionPane.showInputDialog((Object)PAGENR);
 				int pageNumber = Integer.parseInt(pageNumberStr);
-				presentation.setSlideNumber(pageNumber - 1);
+                presentationService.setSlideNumber(presentation, pageNumber - 1);
 			}
 		});
 		add(viewMenu);
