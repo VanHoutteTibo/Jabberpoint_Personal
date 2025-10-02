@@ -1,3 +1,5 @@
+package Domain;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
@@ -7,7 +9,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 
-/** <p>SlideViewerComponent is een grafische component die Slides kan laten zien.</p>
+/** <p>Domain.SlideViewerComponent is een grafische component die Slides kan laten zien.</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman

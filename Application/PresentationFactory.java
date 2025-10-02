@@ -1,6 +1,11 @@
+package Application;
+
+import Domain.Presentation;
+import Domain.Slide;
+
 import java.util.ArrayList;
 
-final class PresentationFactory {
+public class PresentationFactory {
 
     public static Presentation createPresentation(ArrayList<Slide> slides, String title)
     {

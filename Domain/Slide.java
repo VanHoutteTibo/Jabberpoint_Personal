@@ -1,3 +1,5 @@
+package Domain;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
@@ -38,7 +40,7 @@ public class Slide {
 		title = newTitle;
 	}
 
-	// Maak een TextItem van String, en voeg het TextItem toe
+	// Maak een Domain.TextItem van String, en voeg het Domain.TextItem toe
 	public void append(int level, String message) {
 		append(new TextItem(level, message));
 	}

@@ -1,3 +1,8 @@
+import Application.PresentationAccessorService;
+import Application.PresentationService;
+import Domain.Presentation;
+import Domain.SlideViewerComponent;
+
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;

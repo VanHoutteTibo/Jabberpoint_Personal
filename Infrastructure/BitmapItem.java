@@ -1,3 +1,8 @@
+package Infrastructure;
+
+import Domain.SlideItem;
+import Domain.Style;
+
 import java.awt.Rectangle;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -66,6 +71,6 @@ public class BitmapItem extends SlideItem {
 	}
 
 	public String toString() {
-		return "BitmapItem[" + getLevel() + "," + imageName + "]";
+		return "Infrastructure.BitmapItem[" + getLevel() + "," + imageName + "]";
 	}
 }

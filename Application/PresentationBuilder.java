@@ -1,3 +1,8 @@
+package Application;
+
+import Domain.Presentation;
+import Domain.Slide;
+
 import java.util.ArrayList;
 
 public class PresentationBuilder implements Builder {

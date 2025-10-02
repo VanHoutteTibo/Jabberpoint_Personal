@@ -1,3 +1,9 @@
+package Application;
+
+import Domain.Presentation;
+import Domain.Slide;
+import Domain.SlideItem;
+
 public class PresentationService {
 
     public void addEmptySlide(Presentation presentation)
@@ -37,5 +43,12 @@ public class PresentationService {
     public void exit(Presentation presentation, int n)
     {
         presentation.exit(n);
+    }
+
+    public void addItemToLastSlide(Presentation presentation, SlideItem slideItem)
+    {
+        //creator?
+        var slide = presentation.getSlide(presentation.getSize()-1);
+        slide.append(slideItem);
     }
 }

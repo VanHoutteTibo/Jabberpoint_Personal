@@ -1,7 +1,9 @@
+package Domain;
+
 import java.awt.Color;
 import java.awt.Font;
 
-/** <p>Style staat voor Indent, Color, Font and Leading.</p>
+/** <p>Domain.Style staat voor Indent, Color, Font and Leading.</p>
  * <p>De koppeling tussen style-nummer en item-level is nu direct:
  * in Slide wordt de style opgehaald voor een item
  * met als style-nummer het item-level.</p>
@@ -18,11 +20,11 @@ public class Style {
 	private static Style[] styles; // de styles
 	
 	private static final String FONTNAME = "Helvetica";
-	int indent;
+	public int indent; //not sure about accessor: tvht
 	Color color;
 	Font font;
 	int fontSize;
-	int leading;
+	public int leading; //not sure about accessor: tvht
 
 	public static void createStyles() {
 		styles = new Style[5];    
