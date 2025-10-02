@@ -25,7 +25,7 @@ public class JabberPoint {
 	public static void main(String argv[]) {
 		
 		Style.createStyles();
-		Presentation presentation = new Presentation();
+        Presentation presentation = PresentationFactory.createEmptyPresentation();
         PresentationAccessorService presentationAccessorService = new PresentationAccessorService(new XMLAccessor());
 		new SlideViewerFrame(JABVERSION, presentation, presentationAccessorService);
 		try {
