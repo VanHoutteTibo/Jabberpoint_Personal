@@ -6,6 +6,7 @@ import java.awt.MenuShortcut;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.io.Serial;
 
 import javax.swing.JOptionPane;
 
@@ -20,13 +21,13 @@ import javax.swing.JOptionPane;
  */
 public class MenuController extends MenuBar {
 	
-	private Frame parent; // het frame, alleen gebruikt als ouder voor de Dialogs
-	private Presentation presentation; // Er worden commando's gegeven aan de presentatie
+	private final Frame parent; // het frame, alleen gebruikt als ouder voor de Dialogs
+	private final Presentation presentation; // Er worden commando's gegeven aan de presentatie
 
-    private PresentationAccessorService presentationAccessor;
-    private PresentationService presentationService;
-	
-	private static final long serialVersionUID = 227L;
+    private final PresentationAccessorService presentationAccessor;
+
+    @Serial
+    private static final long serialVersionUID = 227L;
 	
 	protected static final String ABOUT = "About";
 	protected static final String FILE = "File";
@@ -52,9 +53,8 @@ public class MenuController extends MenuBar {
 	public MenuController(Frame frame, Presentation pres, PresentationAccessorService accessor, PresentationService presentationService) {
 
         this.presentationAccessor = accessor;
-        this.presentationService = presentationService;
 
-		parent = frame;
+        parent = frame;
 		presentation = pres;
 		MenuItem menuItem;
 		Menu fileMenu = new Menu(FILE);
@@ -121,7 +121,7 @@ public class MenuController extends MenuBar {
 		viewMenu.add(menuItem = mkMenuItem(GOTO));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				String pageNumberStr = JOptionPane.showInputDialog((Object)PAGENR);
+				String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
 				int pageNumber = Integer.parseInt(pageNumberStr);
                 presentationService.setSlideNumber(presentation, pageNumber - 1);
 			}
