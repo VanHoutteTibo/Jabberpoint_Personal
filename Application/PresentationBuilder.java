@@ -5,7 +5,7 @@ import Domain.Slide;
 
 import java.util.ArrayList;
 
-public class PresentationBuilder implements Builder {
+public class PresentationBuilder {
 
     private final ArrayList<Slide> slides;
     private String title;
@@ -14,13 +14,11 @@ public class PresentationBuilder implements Builder {
         slides = new ArrayList<>();
     }
 
-    @Override
     public void addSlide(Slide slide)
     {
         slides.add(slide);
     }
 
-    @Override
     public void setTitle(String title) {
         this.title = title;
     }

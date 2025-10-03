@@ -1,16 +1,13 @@
 package Application;
 
-import Domain.Slide;
-import Domain.TitleSlide;
-
 public class TitleSlideFactory implements SlideFactory {
 
-    public static SlideFactory getSlideFactory() {
+    public static SlideFactory getFactory() {
         return new TitleSlideFactory();
     }
 
     @Override
-    public Slide createSlide() {
-        return new TitleSlide();
+    public TitleSlideBuilder createBuilder() {
+        return new TitleSlideBuilder();
     }
 }

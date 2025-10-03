@@ -1,16 +1,13 @@
 package Application;
 
-import Domain.ContentTableSlide;
-import Domain.Slide;
-
 public class ContentTableSlideFactory implements SlideFactory{
 
-    public static SlideFactory getSlideFactory() {
+    public static SlideFactory getFactory() {
         return new ContentTableSlideFactory();
     }
 
     @Override
-    public Slide createSlide() {
-        return new ContentTableSlide();
+    public ContentTableSlideBuilder createBuilder() {
+        return new ContentTableSlideBuilder();
     }
 }

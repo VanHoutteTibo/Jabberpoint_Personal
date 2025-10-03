@@ -5,12 +5,12 @@ import Domain.Slide;
 
 public class OrdinarySlideFactory implements SlideFactory {
 
-    public static SlideFactory getSlideFactory() {
+    public static SlideFactory getFactory() {
         return new OrdinarySlideFactory();
     }
 
     @Override
-    public Slide createSlide() {
-        return new OrdinarySlide();
+    public OrdinarySlideBuilder createBuilder() {
+        return new OrdinarySlideBuilder();
     }
 }
