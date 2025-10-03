@@ -10,6 +10,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import Application.OrdinarySlideFactory;
 import Domain.Presentation;
 import Domain.Slide;
 import Domain.SlideItem;
@@ -70,7 +71,8 @@ public class XMLAccessor extends Accessor {
 			max = slides.getLength();
 			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
-				Slide slide = new Slide();
+				var slideFactory = OrdinarySlideFactory.getSlideFactory();
+                var slide = slideFactory.createSlide();
 				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
 				presentation.append(slide);
 				
